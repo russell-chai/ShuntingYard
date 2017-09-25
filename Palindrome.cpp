@@ -1,3 +1,9 @@
+/*
+ * Palindrome - by Eric Fan on 9/25/17
+ * Enter a string and this program will
+ * tell you if it is a palindrome.
+ */
+
 #include <iostream>
 #include <cstring>
 using namespace std;
