@@ -13,6 +13,8 @@ public:
     // extends int getYear();
     Movie(char title[], int year, char director[], int duration, char rating[]);
     ~Movie();
+    
+    // setters and getters for each field
     void setDirector(char newDirector[]);
     void setDuration(int newDuration);
     void setRating(char newRating[]);
@@ -21,6 +23,7 @@ public:
     char* getRating(); 
     void print(bool newline);    
 
+// 3 unique fields: director duration and rating
 private:
     // extends char* title
     // extends int year
