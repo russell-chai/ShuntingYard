@@ -1,14 +1,15 @@
 #include "Student.h"
 
 class Node {
- public://Node's functions
-  Node(Student* newStudent);
+ public:
+  Node(Student newStudent);
   ~Node();
   Node* getNext();
   Student* getStudent();
-  void setNext(Node* newNextNode);;
+  void setNext(Node*);
+  Node(Student*);
   
- private://Node's variables
+ private:
   Student* student;
   Node* nextNode;
-};
+}
