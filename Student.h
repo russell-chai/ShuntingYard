@@ -20,4 +20,4 @@ class Student {
   float GPA;
 };
 
-#endif /*STUDENT_H*/
+#endif /*OBJECTS_H*/
