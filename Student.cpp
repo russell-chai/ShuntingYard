@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "Student.h"
 
 using namespace std;
@@ -19,6 +20,7 @@ Student::~Student() {
 
 //print all of Student's infor
 void Student::printInfo() {
+ cout << setprecision(2) << fixed;
  cout << "Name: " << firstName << " " << lastName << endl;
  cout << "Student ID: " << ID << endl;
  cout << "Student GPA: " << GPA << endl;
