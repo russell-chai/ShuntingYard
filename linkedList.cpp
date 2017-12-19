@@ -15,10 +15,10 @@ void print(Node* node) {
   cout << endl;
   print(node->getNext());
 }
-void add(Node* node, Student* student) {
+void add(Node* &head, Node* node, Student* student) {
   if (node == NULL) {
     Node* temp = new Node(student);
-    node = temp;
+    head = temp;
     return;
   }
   if (node->getNext() == NULL) {
@@ -26,7 +26,7 @@ void add(Node* node, Student* student) {
     node->setNext(temp);
     return;
   }
-  add(node->getNext(), student);
+  add(head, node->getNext(), student);
 }
 void remove(Node* &head, Node* node, int studentID) {
   if (node->getStudent()->getID() == studentID && node == head) {
@@ -79,7 +79,7 @@ int main() {
       cin >> GPA;
       cin.ignore();
       Student *temp = new Student(firstName, lastName, studentID, GPA);
-      add(head, temp);
+      add(head, head, temp);
     }
     if (strcmp(input, "PRINT") == 0) {
       print(head);
