@@ -20,7 +20,11 @@ Student::~Student() {
 
 //print all of Student's info
 void Student::printInfo() {
+<<<<<<< HEAD
   cout << setprecision(2) << fixed;
+=======
+ cout << setprecision(2) << fixed;
+>>>>>>> 00460c9126627beb55b82cf95989117dc2ae9c63
  cout << "Name: " << firstName << " " << lastName << endl;
  cout << "Student ID: " << ID << endl;
  cout << "Student GPA: " << GPA << endl;
