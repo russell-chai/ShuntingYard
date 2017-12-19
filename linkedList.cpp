@@ -80,9 +80,6 @@ int main() {
       cin.ignore();
       Student *temp = new Student(firstName, lastName, studentID, GPA);
       add(head, temp);
-      if (head == NULL) {
-	cout << "im going to shoot myself" << endl;
-      }
     }
     if (strcmp(input, "PRINT") == 0) {
       print(head);
