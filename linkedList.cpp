@@ -10,7 +10,6 @@ void print(Node* node) {
   if (node == NULL) {
     return;
   }
-  cout << "hi" << endl;
   node->getStudent()->printInfo();
   cout << endl;
   print(node->getNext());
@@ -61,8 +60,8 @@ int main() {
     cout << "Type DELETE to delete a student" << endl;
     cout << "Type AVERAGE to average all the student's GPA" << endl;
     cout << "Type QUIT to quit program" << endl;
-    char *input = new char(7);
-    cin.getline(input, 7);
+    char *input = new char(8);
+    cin.getline(input, 8);
     if (strcmp(input, "ADD") == 0) {
       char* firstName = new char(50);
       char* lastName = new char(50);
