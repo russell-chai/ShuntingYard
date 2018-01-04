@@ -1,19 +1,26 @@
-
 #include "Student.h"
-
+#ifndef NODE_H_
+#define NODE_H_
 
 class Node {
-public:
 
- Node(Student newStudent);
- ~Node();
- Node* getNext();
- Student* getStudent();
- void setNext(Node*);
- Node(Student*);
+public:
+    Node(Student* value); // enables setting value when created
+    ~Node();
+    // setters
+    void setValue(Student* value);
+    void setNext(Node* next);
+    void setPrevious(Node* previous); // doubly linked list
+    // getters
+    Student* getValue();
+    Node* getNext();
+    Node* getPrevious(); // doubly linked list
 
 private:
- Student* student;
- Node* nextNode;
+    Student* value;
+    Node* next;
+    Node* previous;
+
 };
 
+#endif
