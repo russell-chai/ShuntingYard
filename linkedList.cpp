@@ -58,7 +58,7 @@ int main() {
     cout << "Type ADD to add student" << endl;
     cout << "Type PRINT to print this list of all students" << endl;
     cout << "Type DELETE to delete a student" << endl;
-    cout << "Type AVERAGE to average all the student's GPA" << endl;
+    cout << "Type AVERAGE to calculate the average GPA" << endl;
     cout << "Type QUIT to quit program" << endl;
     char *input = new char(8);
     cin.getline(input, 8);
@@ -90,7 +90,7 @@ int main() {
       remove(head, head, studentID); 
     }
     if (strcmp(input, "AVERAGE") == 0) {
-      average(head, 0, 0);
+       average(head, 0, 0);
     }
     if (strcmp(input, "QUIT") == 0) {
       return 0;
