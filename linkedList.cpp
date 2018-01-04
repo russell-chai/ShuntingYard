@@ -10,7 +10,6 @@ void print(Node* node) {
   if (node == NULL) {
     return;
   }
-  cout << "hi" << endl;
   node->getStudent()->printInfo();
   cout << endl;
   print(node->getNext());
