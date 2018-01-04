@@ -58,9 +58,10 @@ int main() {
     cout << "Type ADD to add student" << endl;
     cout << "Type PRINT to print this list of all students" << endl;
     cout << "Type DELETE to delete a student" << endl;
+    cout << "Type AVERAGE to calculate the average GPA" << endl;
     cout << "Type QUIT to quit program" << endl;
-    char *input = new char(7);
-    cin.getline(input, 7);
+    char *input = new char(8);
+    cin.getline(input, 8);
     if (strcmp(input, "ADD") == 0) {
       char* firstName = new char(50);
       char* lastName = new char(50);
@@ -87,6 +88,9 @@ int main() {
       cout << "input student's ID" << endl;
       cin >> studentID;
       remove(head, head, studentID); 
+    }
+    if (strcmp(input, "AVERAGE") == 0) {
+       average(head, 0, 0);
     }
     if (strcmp(input, "QUIT") == 0) {
       return 0;
