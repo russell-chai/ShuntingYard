@@ -3,7 +3,7 @@
 #include "Student.h"
 #include <string.h>
 #include <iomanip>
-
+//lol
 using namespace std;
 
 void print(Node* node) {
