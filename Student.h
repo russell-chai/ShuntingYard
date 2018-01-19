@@ -1,3 +1,4 @@
+//Student header file
 #ifndef STUDENT_H
 #define STUDENT_H
 
@@ -7,11 +8,11 @@ class Student {
  public:
    Student(char* newFirstName, char* newLastName, int newID, float newGPA);
    ~Student();
-   void printInfo();
-   char* getFirstName();
-   char* getLastName();
-   int getID();
-   float getGPA();
+   void printInfo();//prints all of the student's information
+   char* getFirstName();//gets first name
+   char* getLastName();//gets last name
+   int getID();//get student ID
+   float getGPA();//get GPA
 
  private:
    char* firstName;
