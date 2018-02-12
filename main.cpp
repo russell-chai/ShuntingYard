@@ -5,21 +5,36 @@
 
 using namespace std;
 
-struct node {
+struct stackNode {
   char operand;
-  node *next;
+  stackNode *next;
 };
-
-void removeHead(node* head) {
-  node* temp = head->next;
+struct treeNode {
+  treeNode *parent;
+  treeNode *left;
+  treeNode *right;
+  bool isOperand;
+  char operand;
+  int number;
+};
+void removeHead(stackNode* &head) {
+  stackNode* temp = head->next;
   delete head;
   head = temp;
 }
-void addToHead(char newOperand, node *head) {
-  node *temp = new node();
+void addToHead(char newOperand, stackNode* &head) {
+  stackNode *temp = new stackNode();
   temp->operand = newOperand;
   temp->next = head;
   head = temp;
+}
+void printStack(stackNode *head) {
+  cout << "hello" << endl;
+  if (head->operand == ' ') {
+    return;
+  }
+  cout << head->operand;
+  printStack(head->next);
 }
 int main() {
 
@@ -30,10 +45,13 @@ int main() {
   cout << "use '/' for division" << endl;
   cout << "use '^' for power" << endl;
   
-  node *stackHead = new node();
+  stackNode *stackHead = new stackNode();
   stackHead->next = NULL;
   stackHead->operand = ' ';
 
+  treeNode *topNode = new treeNode();
+  topNode->parent = NULL;
+  
   map<char, int> precedence;
   precedence['^'] = 3;
   precedence['*'] = 2;
@@ -50,39 +68,48 @@ int main() {
 
   vector<char*> postfix;
   
-  char *input = new char(5);
-  cin.get(input, 5, ' ');
-  while (input[0] != '\n') {
-    if ('0' <= input[0] && input[0] <= '9') {
-      cout << input << endl;
+  char *input = new char(200);
+  int runningInt = 0;
+  cin.getline(input, 200);
+  cout << "Postfix: ";
+  for (int a = 0; a < strlen(input); a++) {
+    if ('0' <= input[a] && input[a] <= '9') {
+      runningInt = runningInt * 10 + (input[a] - '0');
     }
     else {
-      else if (input == '(') {
-	addToHead(input, head);
+      if (input[a] == ' ') {
+	if (runningInt > 0) {
+	  cout << runningInt << " ";
+	}
+	runningInt = 0;
       }
-      else if (input == ')') {
-	node *temp = stackHead;
+      else if (input[a] == '(') {
+	addToHead(input[a], stackHead);
+      }
+      else if (input[a] == ')') {
+	stackNode *temp = stackHead;
 	while (temp->operand != '(') {
-	  cout << " " << temp->operand << " ";
+	  cout << temp->operand << " ";
 	  removeHead(temp);
 	}
 	stackHead = temp->next;
 	delete temp;
       }
       else {
-	cout << " ";
 	while (stackHead->operand != ' ' && stackHead->operand != '(' &&
-	     ((precedence[input] < precedence[stackHead->operand]) || (precedence[input] == precedence[stackHead->operand] && associativity[input] == 'l'))) {
+	     ((precedence[input[a]] < precedence[stackHead->operand]) || (precedence[input[a]] == precedence[stackHead->operand] && associativity[input[a]] == 'l'))) {
 	  cout << stackHead->operand << " ";
 	  removeHead(stackHead);
 	}
-	addToHead(input, stackHead);
+	addToHead(input[a], stackHead);
       }
     }
-    cin >> input;
+  }
+  if (runningInt != 0) {
+    cout << runningInt << " ";
   }
   while (stackHead->next != NULL) {
-    cout << " " << stackHead->operand << " ";
+    cout << stackHead->operand << " ";
     removeHead(stackHead);
   }
   return 0;
